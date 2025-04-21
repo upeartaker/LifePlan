@@ -1,4 +1,4 @@
-import { RootLayoutNav } from '@/layout/root';
+import { RootLayoutNav } from '@/screens/root';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
