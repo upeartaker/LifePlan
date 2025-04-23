@@ -40,7 +40,7 @@ export default function ModalLayout() {
         options={{
           title,
           headerLeft: () => (
-            <Text style={styles.headerLeft} onPress={() => router.back()}>
+            <Text style={styles.headerLeft} onPress={() => router.push('/(modal)/add-habits')}>
               自定义习惯
             </Text>
           ),

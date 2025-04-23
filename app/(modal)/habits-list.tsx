@@ -1,22 +1,34 @@
-import { SectionList, StyleSheet } from 'react-native'
+import { Pressable, SectionList, StyleSheet } from 'react-native'
 import { IconMaterial } from '@/components/Icon'
 import { Text, View } from '@/components/Themed'
 import { habits } from '@/constants/Habits'
-
+import { useRouter } from 'expo-router'
 export default function HabitsListModalScreen() {
-
+  const router = useRouter()
   return (
     <SectionList
       style={styles.container}
       sections={habits}
       renderItem={({ item }) => (
-        <View style={styles.item}>
-          <View style={styles.itemName}>
-            <IconMaterial name={item.icon as any} size={24} color='blue' />
-            <Text style={styles.itemNameText}>{item.name}</Text>
+        <Pressable
+          onPress={() => {
+            router.push({
+              pathname: '/(modal)/add-habits',
+              params: {
+                name: item.name,
+                id: item.id,
+                description: item.description,
+              },
+            })
+          }}
+        >
+          <View style={styles.item}>
+            <View style={styles.itemName}>
+              <IconMaterial name={item.icon as any} size={24} color='blue' />
+              <Text style={styles.itemNameText}>{item.name}</Text>
+            </View>
           </View>
-          <Text style={styles.itemDescription}>{item.description}</Text>
-        </View>
+        </Pressable>
       )}
       renderSectionHeader={({ section }) => (
         <View style={styles.sectionHeader}>
