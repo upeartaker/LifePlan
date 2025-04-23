@@ -1,27 +1,14 @@
 import React from 'react'
-import FontAwesome from '@expo/vector-icons/FontAwesome'
-import Entypo from '@expo/vector-icons/Entypo'
+
 import { Link, Tabs } from 'expo-router'
 import { Pressable } from 'react-native'
 
 import Colors from '@/constants/Colors'
 import { useColorScheme } from '@/hooks/useColorScheme'
 import { useClientOnlyValue } from '@/hooks/useClientOnlyValue'
+import { IconAwesome, IconEntypo } from '@/components/Icon'
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name']
-  color: string
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />
-}
 
-function TabBarIconEntypo(props: {
-  name: React.ComponentProps<typeof Entypo>['name']
-  color: string
-}) {
-  return <Entypo size={28} style={{ marginBottom: -3 }} {...props} />
-}
 
 export default function TabLayout() {
   const colorScheme = useColorScheme()
@@ -40,14 +27,14 @@ export default function TabLayout() {
         options={{
           tabBarLabel: '',
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name='check-circle' color={color} />
+            <IconAwesome name='check-circle' color={color} />
           ),
           headerTitle: '制定计划',
           headerRight: () => (
-            <Link href='/modal' asChild>
+            <Link href='/(modal)/habits-list' asChild>
               <Pressable>
                 {({ pressed }) => (
-                  <FontAwesome
+                  <IconAwesome
                     name='info-circle'
                     size={25}
                     color={Colors[colorScheme ?? 'light'].text}
@@ -64,7 +51,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: '',
           headerTitle: '习惯管理',
-          tabBarIcon: ({ color }) => <TabBarIconEntypo name='grid' color={color} />,
+          tabBarIcon: ({ color }) => <IconEntypo name='grid' color={color} />,
         }}
       />
 
@@ -73,7 +60,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: '',
           headerTitle: '专注模式',
-          tabBarIcon: ({ color }) => <TabBarIcon name='clock-o' color={color} />,
+          tabBarIcon: ({ color }) => <IconAwesome name='clock-o' color={color} />,
         }}
       />
       <Tabs.Screen
@@ -81,7 +68,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: '',
           headerTitle: '我的',
-          tabBarIcon: ({ color }) => <TabBarIcon name='user' color={color} />,
+          tabBarIcon: ({ color }) => <IconAwesome name='user' color={color} />,
         }}
       />
     </Tabs>
