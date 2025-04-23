@@ -1,5 +1,5 @@
 import { SectionList, StyleSheet } from 'react-native'
-import { IconMaterialIcons } from '@/components/Icon'
+import { IconMaterial } from '@/components/Icon'
 import { Text, View } from '@/components/Themed'
 import { habits } from '@/constants/Habits'
 
@@ -12,7 +12,7 @@ export default function HabitsListModalScreen() {
       renderItem={({ item }) => (
         <View style={styles.item}>
           <View style={styles.itemName}>
-            <IconMaterialIcons name={item.icon as any} size={24} color='blue' />
+            <IconMaterial name={item.icon as any} size={24} color='blue' />
             <Text style={styles.itemNameText}>{item.name}</Text>
           </View>
           <Text style={styles.itemDescription}>{item.description}</Text>

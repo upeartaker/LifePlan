@@ -13,6 +13,6 @@ export function IconEntypo(props: React.ComponentProps<typeof Entypo>) {
   return <Entypo size={props.size ?? defaultSize} style={{ marginBottom: -3 }} {...props} />
 }
 
-export function IconMaterialIcons(props: React.ComponentProps<typeof MaterialIcons>) {
+export function IconMaterial(props: React.ComponentProps<typeof MaterialIcons>) {
   return <MaterialIcons size={props.size ?? defaultSize} style={{ marginBottom: -3 }} {...props} />
 }

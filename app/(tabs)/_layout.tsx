@@ -1,18 +1,18 @@
 import React from 'react'
 
-import { Link, Tabs } from 'expo-router'
-import { Pressable } from 'react-native'
-
+import { Tabs } from 'expo-router'
+import { Platform, Pressable } from 'react-native'
+import { Text } from '@/components/Themed'
 import Colors from '@/constants/Colors'
 import { useColorScheme } from '@/hooks/useColorScheme'
 import { useClientOnlyValue } from '@/hooks/useClientOnlyValue'
-import { IconAwesome, IconEntypo } from '@/components/Icon'
-
-
+import { IconAwesome, IconEntypo, IconMaterial } from '@/components/Icon'
+import { MenuComponentRef, MenuView } from '@react-native-menu/menu'
+import { useRef } from 'react'
 
 export default function TabLayout() {
   const colorScheme = useColorScheme()
-
+  const menuRef = useRef<MenuComponentRef>(null)
   return (
     <Tabs
       screenOptions={{
@@ -31,18 +31,42 @@ export default function TabLayout() {
           ),
           headerTitle: '制定计划',
           headerRight: () => (
-            <Link href='/(modal)/habits-list' asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <IconAwesome
-                    name='info-circle'
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
+            <MenuView
+              actions={[
+                {
+                  id: 'new-habit',
+                  title: '添加习惯',
+                  subtitle: '从预设习惯中选择',
+                  image: Platform.select({
+                    ios: 'plus',
+                    android: 'ic_menu_add',
+                  }),
+                },
+                {
+                  id: 'custom-habit',
+                  title: '自定义习惯',
+                  subtitle: '创建新的习惯',
+                  image: Platform.select({
+                    ios: 'pencil',
+                    android: 'ic_menu_edit',
+                  }),
+                },
+              ]}
+              onPressAction={({ nativeEvent: { event } }) => {
+                switch (event) {
+                  case 'new-habit':
+                    // 处理添加预设习惯
+                    break
+                  case 'custom-habit':
+                    // 处理自定义习惯
+                    break
+                }
+              }}
+            >
+              <Pressable style={{ paddingHorizontal: 15 }}>
+                <Text style={{ fontSize: 16 }}>添加</Text>
               </Pressable>
-            </Link>
+            </MenuView>
           ),
         }}
       />
@@ -60,7 +84,9 @@ export default function TabLayout() {
         options={{
           tabBarLabel: '',
           headerTitle: '专注模式',
-          tabBarIcon: ({ color }) => <IconAwesome name='clock-o' color={color} />,
+          tabBarIcon: ({ color }) => (
+            <IconAwesome name='clock-o' color={color} />
+          ),
         }}
       />
       <Tabs.Screen
