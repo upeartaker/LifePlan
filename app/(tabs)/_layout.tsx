@@ -1,18 +1,19 @@
 import React from 'react'
 
-import { Tabs } from 'expo-router'
-import { Platform, Pressable } from 'react-native'
-import { Text } from '@/components/Themed'
+import { Tabs, useRouter } from 'expo-router'
+import { Platform } from 'react-native'
 import Colors from '@/constants/Colors'
 import { useColorScheme } from '@/hooks/useColorScheme'
 import { useClientOnlyValue } from '@/hooks/useClientOnlyValue'
 import { IconAwesome, IconEntypo, IconMaterial } from '@/components/Icon'
+// 这个组件在web expo app模式下都不支持 需要 expo prebuild 一下 然后构建native代码哦
 import { MenuComponentRef, MenuView } from '@react-native-menu/menu'
 import { useRef } from 'react'
 
 export default function TabLayout() {
   const colorScheme = useColorScheme()
   const menuRef = useRef<MenuComponentRef>(null)
+  const router = useRouter()
   return (
     <Tabs
       screenOptions={{
@@ -32,6 +33,7 @@ export default function TabLayout() {
           headerTitle: '制定计划',
           headerRight: () => (
             <MenuView
+              ref={menuRef}
               actions={[
                 {
                   id: 'new-habit',
@@ -56,16 +58,16 @@ export default function TabLayout() {
                 switch (event) {
                   case 'new-habit':
                     // 处理添加预设习惯
+                    router.push('/(modal)/habits-list')
                     break
                   case 'custom-habit':
                     // 处理自定义习惯
+                    router.push('/(modal)/add-habits')
                     break
                 }
               }}
             >
-              <Pressable style={{ paddingHorizontal: 15 }}>
-                <Text style={{ fontSize: 16 }}>添加</Text>
-              </Pressable>
+              <IconMaterial name='add' />
             </MenuView>
           ),
         }}
