@@ -26,7 +26,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name='index'
         options={{
-          tabBarLabel: '',
+          tabBarLabel: '今日',
           tabBarIcon: ({ color }) => (
             <IconAwesome name='check-circle' color={color} />
           ),
@@ -75,7 +75,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name='plan'
         options={{
-          tabBarLabel: '',
+          tabBarLabel: '习惯',
           headerTitle: '习惯管理',
           tabBarIcon: ({ color }) => <IconEntypo name='grid' color={color} />,
         }}
@@ -84,7 +84,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name='focus'
         options={{
-          tabBarLabel: '',
+          tabBarLabel: '专注',
           headerTitle: '专注模式',
           tabBarIcon: ({ color }) => (
             <IconAwesome name='clock-o' color={color} />
@@ -94,7 +94,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name='settings'
         options={{
-          tabBarLabel: '',
+          tabBarLabel: '我的',
           headerTitle: '我的',
           tabBarIcon: ({ color }) => <IconAwesome name='user' color={color} />,
         }}

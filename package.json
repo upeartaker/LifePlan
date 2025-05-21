@@ -4,13 +4,12 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
-    "ios": "expo start --ios",
-    "android": "expo start --android",
+    "ios": "expo run:ios",
+    "android": "expo run:android",
     "web": "expo start --web",
-    "prebuild": "expo prebuild",
-    "native:android": "expo run:android",
-    "native:ios": "expo run:ios",
-    "test": "jest --watchAll"
+    "prebuild": "expo prebuild --clean",
+    "test": "jest --watchAll",
+    "clean:native": "rm -rf ios android"
   },
   "jest": {
     "preset": "jest-expo"

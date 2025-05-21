@@ -51,6 +51,12 @@ export default function ModalLayout() {
           ),
         }}
       />
+      <Stack.Screen
+        name='add-habits'
+        options={{
+          title,
+        }}
+      />
     </Stack>
   )
 }
