@@ -273,7 +273,7 @@ export enum MentalHabits {
 }
 
 export const habits:Array<{
-  type: 'lifestyle' | 'exercise' | 'study' | 'social' | 'mental',
+  type: 'lifestyle' | 'exercise' | 'study' | 'social' | 'mental' | 'custom',
   name: string,
   data: Array<{
     id: MentalHabits | Lifestyle | ExerciseHabits | StudyHabits | SocialHabits,

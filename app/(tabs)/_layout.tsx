@@ -73,7 +73,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name='plan'
+        name='habit'
         options={{
           tabBarLabel: '习惯',
           headerTitle: '习惯管理',

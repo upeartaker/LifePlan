@@ -9,7 +9,7 @@ export default function HabitsListModalScreen() {
     <SectionList
       style={styles.container}
       sections={habits}
-      renderItem={({ item }) => (
+      renderItem={({ item , section }) => (
         <Pressable
           onPress={() => {
             router.push({
@@ -18,6 +18,7 @@ export default function HabitsListModalScreen() {
                 name: item.name,
                 id: item.id,
                 description: item.description,
+                type: section.type
               },
             })
           }}

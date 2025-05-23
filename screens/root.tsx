@@ -1,4 +1,5 @@
 import { useColorScheme } from '@/hooks/useColorScheme'
+import { ActionSheetProvider } from '@expo/react-native-action-sheet'
 import {
   DarkTheme,
   DefaultTheme,
@@ -10,16 +11,18 @@ export function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-        <Stack.Screen
-          name='(modal)'
-          options={{
-            headerShown: false,
-            presentation: 'modal',
-          }}
-        />
-      </Stack>
+      <ActionSheetProvider>
+        <Stack>
+          <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+          <Stack.Screen
+            name='(modal)'
+            options={{
+              headerShown: false,
+              presentation: 'modal',
+            }}
+          />
+        </Stack>
+      </ActionSheetProvider>
     </ThemeProvider>
   )
 }

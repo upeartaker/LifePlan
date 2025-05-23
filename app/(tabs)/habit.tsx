@@ -1,11 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
+import { useHabitStore } from '@/store/habit';
 
 export default function HabitManagementScreen() {
+
+  const { habits } = useHabitStore((s) => s)
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>习惯管理</Text>
+      <Text style={styles.title}>我的习惯</Text>
+      <FlatList
+        data={habits}
+        renderItem={({ item }) => <Text>{item.name}</Text>}
+      />
     </View>
   );
 }
